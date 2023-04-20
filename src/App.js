@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react'
 import Board from './components/Board.jsx';
+import ScoreBoard from './components/ScoreBoard';
 
 function App() {
   const WIN_CONDITIONS = [
@@ -50,7 +51,7 @@ function App() {
       }
     }
 
-    console.log(scores)
+    // console.log(scores)
 
     setBoard(updatedBoard)
 
@@ -59,6 +60,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScoreBoard scores = {scores} xPlaying={xPlaying}/>
       <Board board={board} onClick={handleBoxClick} />
     </div>
   );
