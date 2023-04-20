@@ -1,12 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
-import Box from './components/Box.jsx';
+import React, {useState} from 'react'
+import Board from './components/Board.jsx';
 
 function App() {
+  const [board, setBoard] = useState(Array(9).fill(null))
+  const [xPlaying, setXPlaying] = useState(true)
+
+  const handleBoxClick = (boxIdx) => {
+    const updatedBoard = board.map((value, idx) => {
+      if(idx===boxIdx){
+        return xPlaying === true ? 'X' : 'O'
+      }else{
+        return value
+      }
+    })
+    setBoard(updatedBoard)
+
+    setXPlaying(!xPlaying)
+  }
+
   return (
     <div className="App">
-      yo
-      <Box value="X" onClick={null}/>
+      <Board board={board} onClick={handleBoxClick}/>
     </div>
   );
 }
